@@ -1,5 +1,10 @@
 # 04 Web APIs: Code Quiz
 
+## Links to GIT Repo and Hosted App
+
+<https://github.com/MiinoSil/NGO-UCI-BOOT-WK-4-HW-GIT>
+<https://miinosil.github.io/NGO-UCI-BOOT-WK-4-HW-GIT/>
+
 ## Your Task
 
 At some point in your journey to become a full-stack web developer, you’ll likely be asked to complete a coding assessment&mdash;perhaps as part of an interview process. A typical coding assessment includes both multiple-choice questions and interactive coding challenges. 
