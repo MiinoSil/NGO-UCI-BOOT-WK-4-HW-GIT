@@ -9,21 +9,10 @@ var answerArea = document.getElementById('answercontainer');
 var timeLeft = 30;
 
 // Array of questions and answers
-var gameQuestions = [
-    'Which file extension does Javascript use?', 
-    'Which selector is specific for Id?',
-];
+var gameQuestions = ['Which file extension does Javascript use?', 
+    'Which selector is specific for Id?'];
 
-var gameAnswers = [
-    'A. html',
-    'B. css',
-    'C. js',
-    'D. px',
-    'A. getElementByID()',
-    'B. querySelector()',
-    'C. querySelectorAll()',
-    'D. grabElementbyID()',
-];
+var gameAnswers = ['A. html', 'B. css', 'C. js', 'D. px', 'A. getElementByID()', 'B. querySelector()', 'C. querySelectorAll()', 'D. grabElementbyID()'];
 
 gameArea.style.visibility = 'hidden';
 
@@ -56,27 +45,27 @@ function startCodingQuiz () {
     var questionEl = document.createElement('p');
     questionArea.appendChild(questionEl);
     questionEl.setAttribute('class', 'question');
-    questionEl.textContent = gameQuestions.value[0];
+    questionEl.textContent = gameQuestions[0];
 
     var answerChoiceA = document.createElement('button');
     answerArea.appendChild(answerChoiceA);
     answerChoiceA.setAttribute('class', 'answerbtn');
-    answerChoiceA.textContent = gameAnswers.value[0];
+    answerChoiceA.textContent = gameAnswers[0];
 
     var answerChoiceB = document.createElement('button');
     answerArea.appendChild(answerChoiceB);
     answerChoiceB.setAttribute('class', 'answerbtn');
-    answerChoiceB.textContent = gameAnswers.value[1];
+    answerChoiceB.textContent = gameAnswers[1];
 
     var answerChoiceC = document.createElement('button');
     answerArea.appendChild(answerChoiceC);
     answerChoiceC.setAttribute('class', 'answerbtn');
-    answerChoiceC.textContent = gameAnswers.value[2];
+    answerChoiceC.textContent = gameAnswers[2];
 
     var answerChoiceD = document.createElement('button');
     answerArea.appendChild(answerChoiceD);
     answerChoiceD.setAttribute('class', 'answerbtn');
-    answerChoiceD.textContent = gameAnswers.value[3];
+    answerChoiceD.textContent = gameAnswers[3];
 
         // Conditional for wrong answer, subtract time from countdown
 
