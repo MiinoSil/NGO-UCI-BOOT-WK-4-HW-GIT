@@ -62,6 +62,13 @@ body {
     width: 40%;
 }
 
+#question {
+    font-size: 28px;
+    text-align: left;
+    padding: 5px;
+    margin: 10px;
+}
+
 #answercontainer {
     display: block;
     margin: auto;
@@ -71,15 +78,8 @@ body {
     width: 40%;
 }
 
-.question {
-    font-size: 28px;
-    text-align: left;
-    padding: 5px;
-    margin: 10px;
-}
-
-.answerbtn {
-    padding: 5px;
+.answerBTN {
+    padding: 10px;
     height: 25%;
     width: 80%;
     border: 2px solid white;
@@ -88,11 +88,32 @@ body {
     font-size: larger;
     font-weight: bolder;
     color: white;
-    text-align: left;
+    text-align: center;
 }
 
-.answerbtn:hover {
+#btnA, #btnB, #btnC, #btnD {
+    padding: 10px;
+    height: 25%;
+    width: 80%;
+    border: 2px solid white;
+    border-radius: 300px;
+    background-color: rgb(0, 11, 167);
+    font-size: larger;
+    font-weight: bolder;
+    color: white;
+    text-align: center;
+}
+
+#btnA:hover, #btnB:hover, #btnC:hover, #btnD:hover {
     opacity: 0.4;
+}
+
+#inputcontainer {
+    position: absolute;
+    margin: auto;
+    text-align: center;
+    top: 40%;
+    left: 40%;
 }
 
 #footercontainer {

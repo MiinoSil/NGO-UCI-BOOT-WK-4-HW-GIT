@@ -5,16 +5,36 @@ var timer = document.getElementById('timercontainer');
 var gameArea = document.getElementById('gameareacontainer');
 var headerEl = document.getElementById('headercontainer');
 var questionArea = document.getElementById('questioncontainer');
+var questionPel = document.getElementById('question');
 var answerArea = document.getElementById('answercontainer');
-var timeLeft = 30;
+var initialsInput = document.getElementById('inputcontainer');
+var wrong = document.getElementById('wronganswer');
+var GamerInitials = document.getElementById('initials');
+var submitbtn = document.getElementById('submitbtn');
+var answerButtons = document.querySelectorAll('answerBTN');
+
+var choice0 = document.getElementById('choice0');
+var choice1 = document.getElementById('choice1');
+var choice2 = document.getElementById('choice2');
+var choice3 = document.getElementById('choice3');
+
+var timeLeft = 15;
+var score = 0;
+console.log(score);
+
+
+// Set visibility of select elements on the page
+wrong.style.visibility = 'hidden';
+initialsInput.style.display = 'none';
+gameArea.style.visibility = 'hidden';
 
 // Array of questions and answers
-var gameQuestions = ['Which file extension does Javascript use?', 
-    'Which selector is specific for Id?'];
-
-var gameAnswers = ['A. html', 'B. css', 'C. js', 'D. px', 'A. getElementByID()', 'B. querySelector()', 'C. querySelectorAll()', 'D. grabElementbyID()'];
-
-gameArea.style.visibility = 'hidden';
+var questions = [
+    'Which file extension does Javascript use?', ['html', 'css','js', 'px'], 
+    'Which selector is specific for Id?', ['getElementByID()', 'querySelector()', 'querySelectorAll()', 'grabElementbyID()'],
+    'Where can language makes web apps interactive?', ['HTML', 'CSS', 'JavaScript', 'XML'],
+    'If not stored to localStorage, how long does a save value remain?', ['Remains forever', 'Value is not stored', 'Until cookies are cleared', 'Until page or app refresh']
+]
 
 // Create time interval countdown
 function timeRemaining() {
@@ -23,15 +43,18 @@ function timeRemaining() {
         timer.textContent = timeLeft + ' seconds left.';
         timer.style.fontSize = '36px';
 
+        // Condition, when time is 0 clear the game container, show initial inputs
         if(timeLeft === 0) {
             clearInterval(timeInterval);
-            timer.textContent = 'GAME OVER!'
+            timer.textContent = 'GAME OVER!';
             console.log('game over');
+            gameArea.style.display = 'none';
+            initialsInput.style.display = 'block';
         }
     }, 1000);
 }
 
-// Create a function for start button to start coding quiz
+// Create a function coding quiz
 function startCodingQuiz () {
 
     // Test event listener for start button
@@ -41,46 +64,95 @@ function startCodingQuiz () {
     headerEl.style.visibility = 'hidden';
     gameArea.style.visibility = 'visible';
 
-    // Create questions and answers then append to parent element
-    var questionEl = document.createElement('p');
-    questionArea.appendChild(questionEl);
-    questionEl.setAttribute('class', 'question');
-    questionEl.textContent = gameQuestions[0];
+    showQuestion();
+};
 
-    var answerChoiceA = document.createElement('button');
-    answerArea.appendChild(answerChoiceA);
-    answerChoiceA.setAttribute('class', 'answerbtn');
-    answerChoiceA.textContent = gameAnswers[0];
+function showQuestion () {
+    questionPel.textContent = questions[0];
+    choice0.textContent = questions[1][0];
+    choice1.textContent = questions[1][1];
+    choice2.textContent = questions[1][2];
+    choice3.textContent = questions[1][3];
+    selectionAnswer();
+}
 
-    var answerChoiceB = document.createElement('button');
-    answerArea.appendChild(answerChoiceB);
-    answerChoiceB.setAttribute('class', 'answerbtn');
-    answerChoiceB.textContent = gameAnswers[1];
+function selectionAnswer() {
+   choice2.addEventListener('click', () => {
+       score++;
+       console.log(score);
+       showQuestion2();
+   });
+};
 
-    var answerChoiceC = document.createElement('button');
-    answerArea.appendChild(answerChoiceC);
-    answerChoiceC.setAttribute('class', 'answerbtn');
-    answerChoiceC.textContent = gameAnswers[2];
+function showQuestion2 () {
+    questionArea = '';
+    answerArea = '';
+    questionPel.textContent = questions[2];
+    choice0.textContent = questions[3][0];
+    choice1.textContent = questions[3][1];
+    choice2.textContent = questions[3][2];
+    choice3.textContent = questions[3][3];
+    selectionAnswer2();
+}
 
-    var answerChoiceD = document.createElement('button');
-    answerArea.appendChild(answerChoiceD);
-    answerChoiceD.setAttribute('class', 'answerbtn');
-    answerChoiceD.textContent = gameAnswers[3];
+function selectionAnswer2() {
+    choice0.addEventListener('click', () => {
+        score++;
+        console.log(score);
+        showQuestion3();
+    });
+};
 
-        // Conditional for wrong answer, subtract time from countdown
+function showQuestion3 () {
+    questionArea = '';
+    answerArea = '';
+    questionPel.textContent = questions[4];
+    choice0.textContent = questions[5][0];
+    choice1.textContent = questions[5][1];
+    choice2.textContent = questions[5][2];
+    choice3.textContent = questions[5][3];
+    selectionAnswer3();
+}
 
-        // Conditional, correct answer add point to score, create message "correct!"
+function selectionAnswer3() {
+    choice3.addEventListener('click', () => {
+        score++;
+        console.log(score);
+        showQuestion4();
+    });
+};
 
-        // Conditional, create message "wrong"
+function showQuestion4 () {
+    questionArea = '';
+    answerArea = '';
+    questionPel.textContent = questions[6];
+    choice0.textContent = questions[7][0];
+    choice1.textContent = questions[7][1];
+    choice2.textContent = questions[7][2];
+    choice3.textContent = questions[7][3];
+    selectionAnswer4();
+}
 
-        // Conditional, once an answer choice is selected hide current question and answer, move to next set
+function selectionAnswer4() {
+    choice3.addEventListener('click', () => {
+        score++;
+        console.log(score);
+        gameArea.style.display = 'none';
+        window.alert('All done!')
+    });
+};
 
-        // Conditional, game over when timer is "0", or all questions are answered
+function storeInitials () {
+    var Scoreboard = {
+        Initials: GamerInitials.value,
+        RecordScore: score.value,
+    }; window.localStorage.setItem('Game Record', JSON.stringify(Scoreboard));
+    showScore();
+};
 
-        // Conditional, game completed create input field
-
-        // Store input and score to local storage
-
+function showScore () {
+    var Currenttopscore = JSON.parse(localStorage.getItem('Scoreboard'));
+    window.alert(Currenttopscore);
 }
 
 // Add event listener for start button
@@ -89,5 +161,35 @@ startbtnEl.addEventListener('click', () => {
     timeRemaining();
 });
 
-// Add event listener for answer choice
+// Add event listener for submit button
+submitbtn.addEventListener('click', storeInitials);
 
+
+
+
+// Below is an array for use if loops are working
+// var questions = [
+//     {question: 'Which file extension does Javascript use?', 
+//     answers: [
+//         {text: 'html', correct: false}, 
+//         {text: 'css', correct: false}, 
+//         {text: 'js', correct: true}, 
+//         {text: 'px', correct: false}]}, 
+//     {question: 'Which selector is specific for Id?', 
+//     answers: [
+//         {text: 'getElementByID()', correct: true}, 
+//         {text: 'querySelector()', correct: false}, 
+//         {text: 'querySelectorAll()', correct: false}, 
+//         {text: 'grabElementbyID()', correct: false}]},
+//     {question: 'Where can language makes web apps interactive?', 
+//     answers: [
+//         {text: 'HTML', correct: false}, 
+//         {text: 'CSS', correct: false}, 
+//         {text: 'JavaScript', correct: true}, 
+//         {text: 'XML', correct: false}]},
+//     {question: 'If not stored to localStorage, how long does a save value remain?', 
+//     answers: [
+//         {text: 'Remains forever', correct: false}, 
+//         {text: 'Value is not stored', correct: false}, 
+//         {text: 'Until cookies are cleared', correct: false}, 
+//         {text: 'Until page or app refresh', correct: true}]}

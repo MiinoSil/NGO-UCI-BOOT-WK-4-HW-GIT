@@ -23,21 +23,33 @@
 
         <!-- Questions -->
         <div id="questioncontainer">
-            <!-- Use JavaScript, create <p> element, style with css class, append to div -->
-            <!-- Style with class .question -->
+            <p id="question"></p>
+            <!-- User javascript to add text to container -->
         </div>
 
         <!-- Answers  -->
         <div id="answercontainer">
-            <!-- Use JavaScript, create <button> element, append to div, style with css class -->
-            <!-- Style with class .answerbtn -->
-        </div>
-        
-        <!-- Initials input -->
-        <div id="initialsInput">
-            <!-- Use Javascript, create input field, store value to local storage -->
+            <button class="answerBTN" id="choice0"></button>
+            <button class="answerBTN" id="choice1"></button>
+            <button class="answerBTN" id="choice2"></button>
+            <button class="answerBTN" id="choice3"></button>
+
+            <!-- Use JavaScript to answer choices to buttons -->
         </div>
 
+        <p id="wronganswer">Wrong!</p>
+
+    </div>
+
+    <!-- Initials input -->
+    <div id="inputcontainer">
+        <label for="initials">Initials (2 to 3 characters)</label>
+        <input id="initials" name="Initials" required minlength="2" maxlength="3">
+        <input id="submitbtn" type="submit" value="submit">
+    </div>
+
+    <div>
+        <p id="scoreContainer"></p>
     </div>
 
     <footer id="footercontainer">
